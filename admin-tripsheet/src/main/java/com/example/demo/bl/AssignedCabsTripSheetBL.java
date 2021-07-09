@@ -105,5 +105,9 @@ public class AssignedCabsTripSheetBL {
 		
 		return this.tripSheetDl.getAllEmployeeDetails();
 	}
+
+	public BookingRequest updateShow(long bookingId) {
+		return this.tripSheetDl.updateShow(bookingId);
+	}
 	
 }

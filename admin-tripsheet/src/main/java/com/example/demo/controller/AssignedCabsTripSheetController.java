@@ -124,7 +124,12 @@ public class AssignedCabsTripSheetController {
 		return ResponseEntity.status(HttpStatus.OK).body(employees);
 	}
 	
-	
+	//update Show Status
+	@PutMapping(path="/tripsheet/show/{bookingId}")
+	public ResponseEntity<BookingRequest> updateShow(@PathVariable ("bookingId") long bookingId){
+		BookingRequest req=this.tripSheetBl.updateShow(bookingId);
+		return ResponseEntity.status(HttpStatus.OK).body(req);
+	}
 	
 	
 	

@@ -1,8 +1,6 @@
-
-
 window.onload = getTripSheet;
 var timeOut = setInterval(function() {getTripSheet();
-}, 10000);
+}, 60000);
 var xhr = new XMLHttpRequest();
 var http = new XMLHttpRequest();
 var tripCabId = 101;
@@ -121,7 +119,7 @@ function displayInfo(obj) {
          
         var td6 = document.createElement('td');
         td6.className = "spacing1";
-        td6.innerHTML = "<select class='form-select style-select1 border-filter-style' id='Droppoint4"+ rows +"' aria-label='Default-example'><option value='1'>Show</option><option value='2' selected>No Show</option></select>";
+        td6.innerHTML = "<select  class='form-select style-select1 border-filter-style' id='Droppoint4"+ rows +"' aria-label='Default-example' onchange='showUpdate(this)'><option value='1'>Show</option><option value='2' selected>No Show</option></select>";
         trow.appendChild(td6); 
               
          var td7 = document.createElement('td');
@@ -370,7 +368,7 @@ function editData(row) {
 	var rowId = id.replace("td", "");
 	var employeeId = document.getElementById("emp-id");
 	var employeeName = document.getElementById("emp-name");
-	var dropPoint = document.getElementById("Droppoint4");
+	var dropPoint = document.getElementById("Droppoint4"+rowId);
 	
 	var editId = document.getElementById("tr"+rowId).getElementsByTagName('td')[1].innerHTML;
 	var editName = document.getElementById("tr"+rowId).getElementsByTagName('td')[2].innerHTML;
@@ -389,13 +387,18 @@ function editData(row) {
 // To update the edited data
 var updateXML = new XMLHttpRequest();
 document.getElementById("updatebutton").onclick = function() {
-	
 	var dropPoint = document.getElementById("droppoints").value;
+	if(dropPoint!="Select"){
+	
 	updateXML.open("PUT", "http://localhost:8080/api/v1/tripsheet/update/droppoint", true);
 	updateXML.setRequestHeader("Content-Type","application/json");
 	var data = {"bookingId" : bookingId, "dropPoint" : dropPoint};
 	updateXML.onreadystatechange = processResponseUpdate;
 	updateXML.send(JSON.stringify(data));
+	}
+	else{
+		alert("Select Droppoint");
+	}
 	
 };
 
@@ -472,8 +475,8 @@ function updateStatusOfEmp() {
 	}
 	
 	if(showCount > 0) {
-		
-		updateEmpStatus.open("PUT", "http://localhost:8080/api/v1/update/time/status/" + tripCabId + "/" + showList + "/" + noShowList, true);
+		if(noShowList.length>0){
+			updateEmpStatus.open("PUT", "http://localhost:8080/api/v1/update/time/status/" + tripCabId + "/" + showList + "/" + noShowList, true);
 	     updateEmpStatus.setRequestHeader("Content-Type","application/json");
 	    updateEmpStatus.send();
 	    updateEmpStatus.onreadystatechange = function() {
@@ -483,6 +486,22 @@ function updateStatusOfEmp() {
 			window.location.href = "ongoingtripsheet.html?tripCabId=" + tripCabId;
 		}
 	}
+			
+		}
+		else{
+			updateEmpStatus.open("PUT", "http://localhost:8080/api/v1/update/time/status/" + tripCabId + "/" + showList + "/" + 0, true);
+	     updateEmpStatus.setRequestHeader("Content-Type","application/json");
+	    updateEmpStatus.send();
+	    updateEmpStatus.onreadystatechange = function() {
+		
+		if (updateEmpStatus.readyState == 4 &&  updateEmpStatus.status == 200) {
+			
+			window.location.href = "ongoingtripsheet.html?tripCabId=" + tripCabId;
+		}
+	}
+		}
+		
+		
 	}
 	else {
 		
@@ -580,3 +599,29 @@ function searchForEmployeeName() {
 document.addEventListener("click", function(e) {
     divElement.style.display = "none";
 })
+var bookingId;
+
+var showXML=new XMLHttpRequest();
+var showUrl="http://localhost:8080/api/v1/tripsheet/show/";
+function showUpdate(obj){
+	var trowId=obj.closest("tr").id;
+	var trow=document.getElementById(trowId);
+	var showopt= document.getElementById(obj.id);
+	if(showopt.value==1){
+		
+		bookingId=trow.cells[7].innerHTML;
+		showXML.open("PUT",showUrl +bookingId,true);
+		showXML.send(null);
+		showXML.onreadystatechange=function(){
+			if(showXML.readyState==4 && showXML.status==200)
+			{
+				showopt.disabled=true;
+			}
+		}
+		
+		
+		
+	}
+	
+	
+}

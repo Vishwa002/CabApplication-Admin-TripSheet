@@ -188,11 +188,13 @@ public class AssignedCabsTripsheetDL {
 			this.bookingRequestRepo.save(request);
 		}
 		
+		if(!(noShowList.isEmpty())) {
          for(int employeeId : noShowList) {
 			
 			BookingRequest request = this.bookingRequestRepo.findByTripCabIdAndEmployeeId(tripCabId, employeeId);
 			request.setStatus("NoShow");
 			this.bookingRequestRepo.save(request);
+		}
 		}
 	}
 
@@ -201,4 +203,12 @@ public class AssignedCabsTripsheetDL {
 		return this.employeeRepo.findAll();
 	}
 
+	public BookingRequest updateShow(long bookingId) {
+		Optional<BookingRequest> req=this.bookingRequestRepo.findById(bookingId);
+		BookingRequest found=req.get();
+		found.setStatus("On Progress");
+		return this.bookingRequestRepo.save(found);
+	}
+
+	
 }
