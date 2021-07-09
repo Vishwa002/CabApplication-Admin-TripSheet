@@ -571,6 +571,7 @@ body {
 	border-radius:50px;
 	height:30px;
 	width:29px;
+	
 }
 .style-select
 {
@@ -1007,3 +1008,23 @@ body {
 
 }
 /** button style popup ends**/
+
+
+/**css for employee name search suggestions starts **/
+
+.suggestStyle
+{
+position: absolute;
+list-style: none;
+float: left;
+background-color: ivory;
+display: none;
+}
+.suggestList
+{
+padding: 10px 10px;
+}
+.suggestList:hover
+{
+background-color: lightgray;
+}

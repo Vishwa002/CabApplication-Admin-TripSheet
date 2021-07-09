@@ -117,6 +117,14 @@ public class AssignedCabsTripSheetController {
 	
 	
 	
+	//get employee details
+	@GetMapping(path= "/tripsheet/getallemployee")
+	public ResponseEntity<List<Employee>> getAllEmployeeDetails(){
+		List<Employee> employees=this.tripSheetBl.getAllEmployeeDetails();
+		return ResponseEntity.status(HttpStatus.OK).body(employees);
+	}
+	
+	
 	
 	
 	

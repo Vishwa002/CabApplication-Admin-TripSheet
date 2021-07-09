@@ -100,5 +100,10 @@ public class AssignedCabsTripSheetBL {
 		
 		this.tripSheetDl.updateEmployeeStatus(tripCabId, showList, noShowList);
 	}
+
+	public List<Employee> getAllEmployeeDetails() {
+		
+		return this.tripSheetDl.getAllEmployeeDetails();
+	}
 	
 }

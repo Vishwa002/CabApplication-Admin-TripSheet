@@ -84,6 +84,8 @@ public class AdminTripsheetApplication {
 				employeeRepo.save(emp4);
 				Employee emp5=new 	Employee(205, "Vignesh");
 				employeeRepo.save(emp5);
+				Employee emp6=new 	Employee(206, "Nishok Smart");
+				employeeRepo.save(emp6);
 			//	emp.addAll(Arrays.asList(emp1,emp2,emp3,emp4,emp5));
 				
 //				TripCabInfo trip=new TripCabInfo(101, "TN24G9999", 1,"BayLine"  , "Tambaram", LocalDate.now(), LocalTime.of(9, 30), 7, 5, 2, "Yet to Start", LocalTime.now(),null);

@@ -196,4 +196,9 @@ public class AssignedCabsTripsheetDL {
 		}
 	}
 
+	public List<Employee> getAllEmployeeDetails() {
+		
+		return this.employeeRepo.findAll();
+	}
+
 }

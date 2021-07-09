@@ -316,10 +316,17 @@ function addNewEmployee() {
 }
    if(document.getElementById("remainingseats").innerHTML != 0){
 	  if(matchCount == 0){
-           addEmployee.open("POST", addEmpURL, true);
+		
+		if(dropPoint!="Select"){
+			addEmployee.open("POST", addEmpURL, true);
            addEmployee.setRequestHeader("Content-Type","application/json");
            addEmployee.send(JSON.stringify(data));
             addEmployee.onreadystatechange = processResponseSave;
+		}
+		else{
+			alert("Select DropPoint");
+		}
+           
       }
       else{
             alert("Employee already exists");	
@@ -436,6 +443,8 @@ function processResponseDelete() {
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
+
+
 var updateEmpStatus = new XMLHttpRequest();
 function updateStatusOfEmp() {
 	
@@ -480,4 +489,94 @@ function updateStatusOfEmp() {
 		alert("Cannot start trip");
 	}
 }
+/*------------------------------------------------------------------------------------------------------------------------*/
 
+//Suggestion employeeName
+var employeeDetails;
+var empNameSugest=new XMLHttpRequest();
+var suggestUrl="http://localhost:8080/api/v1/tripsheet/getallemployee";
+
+function getAllEmployeeDetails(){
+	
+	
+	empNameSugest.open("GET", suggestUrl , true);
+	 empNameSugest.onreadystatechange =function(){
+		if(empNameSugest.readyState==4 && empNameSugest.status==200){
+			employeeDetails=JSON.parse(this.responseText);
+		}
+	};
+            empNameSugest.send(null);
+	
+}
+getAllEmployeeDetails();
+employeeNameInput=document.getElementById("emp-name");
+employeeNameInput.addEventListener("input", searchForEmployeeName);
+
+var divElement = document.getElementById("suggestDiv");
+var getDriverId;
+
+function searchForEmployeeName() {
+   // getDriverId = undefined;
+    
+    var userEntry = employeeNameInput.value;
+   
+    //delete old listtag if any 
+    let childCount = divElement.childElementCount;
+    if(childCount > 0) {
+        for(let i=0; i<childCount; i++) {
+            divElement.removeChild(divElement.firstChild);
+        }
+    }
+    //
+
+    if(userEntry != "") {
+        //change user entry to lower case and compare with driver info array
+        var suggestionArr = employeeDetails.filter(text => text.employeeName.toLowerCase().startsWith(userEntry.toLowerCase()));
+        
+        var suggLimit = 7;
+
+        //creating list tag starts
+        for(let i=0; i<suggestionArr.length; i++) {
+             
+            divElement.style.display = "block";
+
+            //limit suggestion to 5
+            if(i<suggLimit) {
+                var listTag = document.createElement("li");
+                listTag.id=suggestionArr[i].driverId;
+                
+                listTag.className = "suggestList";
+                listTag.innerText = suggestionArr[i].employeeName + " - " + suggestionArr[i].employeeId;
+
+                divElement.appendChild(listTag);
+            }
+        }
+        //
+    }
+    
+    //onclick function for list tags
+    var suggestList = document.getElementsByClassName("suggestList");
+
+    for(var i=0; i<suggestList.length; i++) {
+        suggestList[i].addEventListener("click", function() {
+	
+            let employeeDetails = this.innerText.split(" - ");
+
+            //append the value clicked to textbox capitalize first letter
+            employeeNameInput.value = employeeDetails[0].charAt(0).toUpperCase() + employeeDetails[0].slice(1);
+			
+			//getDriverId = this.id;
+			 var id = document.getElementById("emp-id");
+			var eId=employeeDetails[1];
+			id.value=eId;
+            //hide list 
+            divElement.style.display = "none";
+
+        })
+    }
+
+}
+
+document.addEventListener("click", function(e) {
+    divElement.style.display = "none";
+})
