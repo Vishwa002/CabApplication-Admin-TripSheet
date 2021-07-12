@@ -157,11 +157,11 @@ function displayInfo(obj) {
 // To autopopulate drop points dropdown based on the destination
 function dropDown(dest) {
 	http.open("GET", url2 + dest, true);
-	 http.onreadystatechange = processResponseDropDown;
+	 http.onreadystatechange = processResponseDestinationDropDown;
             http.send(null);
 
            }
-function processResponseDropDown() {
+function processResponseDestinationDropDown() {
 	
 
             event.preventDefault();
