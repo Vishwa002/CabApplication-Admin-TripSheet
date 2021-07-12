@@ -645,6 +645,8 @@ function searchForEmployeeName() {
 document.addEventListener("click", function(e) {
     divElement.style.display = "none";
 })
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+//show update to update status of the employee on driver's screen when admin update
 var bookingId;
 
 var showXML=new XMLHttpRequest();
