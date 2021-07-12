@@ -65,6 +65,9 @@ public class AssignedCabsTripsheetDL {
 		
 		return this.bookingRequestRepo.getBookingRequestByTripCabId(tripCabId);
 	}
+	
+	
+
 
 	public DriverInfo getDriverInfo(long driverId) {
 		Optional<DriverInfo> driver=this.driverRepo.findById(driverId);
@@ -193,6 +196,10 @@ public class AssignedCabsTripsheetDL {
 			
 			BookingRequest request = this.bookingRequestRepo.findByTripCabIdAndEmployeeId(tripCabId, employeeId);
 			request.setStatus("NoShow");
+			Optional<Employee> emp=this.employeeRepo.findById(employeeId);
+			Employee employee=emp.get();
+			employee.setIsBlocked(1);
+			this.employeeRepo.save(employee);
 			this.bookingRequestRepo.save(request);
 		}
 		}
@@ -210,5 +217,6 @@ public class AssignedCabsTripsheetDL {
 		return this.bookingRequestRepo.save(found);
 	}
 
+	
 	
 }

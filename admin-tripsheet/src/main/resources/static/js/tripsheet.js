@@ -260,18 +260,46 @@ function employeeIdAutofill() {
 /* ------------------------------------------------------------------------------------------------------------------------------ */
 
 // Save button functionality -> Admin books a cab for the employee
+var updateFlag = false;
+function saveAndUpdateEmployee() {
+	
+	if(updateFlag == false) {
+		
+		addNewEmployee();
+	}
+	else{
+		
+		updateData();
+	}
+}
 var addEmployee = new XMLHttpRequest();
 var addEmpURL = "http://localhost:8080/api/v1/tripsheet/addemployee/" + 101;
 var tableData = document.getElementById("tablebody");
 var matchCount = 0;
+var empMatch = false;
+var employeeDetails;
 function addNewEmployee() {
 	
 	var employeeId = document.getElementById("emp-id").value;
 	var employeeName = document.getElementById("emp-name").value;
+	for(var i = 0; i < employeeDetails.length; i++) {
+		
+		if((employeeName == employeeDetails[i].employeeName) && (employeeId == employeeDetails[i].employeeId)){
+			
+			empMatch = true;
+		}
+	}
+	
 	var dropPoint = document.getElementById("droppoints").value;
 	var source = document.getElementById("source").innerHTML;
 	var destination = document.getElementById("destination").innerHTML;
 	var timeSlotVal = document.getElementById("timeslot").innerHTML;
+	
+	if(employeeId == "" || employeeName == "") {
+		
+		alert("Employee fields cannot be empty");
+		return false;
+	}
 	
 	var splittedTimeSlot = timeSlotVal.split(":"); //09.30 AM = 09,30 AM
     minute = splittedTimeSlot[1].split(" "); //30,AM
@@ -315,24 +343,36 @@ function addNewEmployee() {
    if(document.getElementById("remainingseats").innerHTML != 0){
 	  if(matchCount == 0){
 		
-		if(dropPoint!="Select"){
+		if(empMatch == true) {
+			
+			if(dropPoint!="Select"){
 			addEmployee.open("POST", addEmpURL, true);
            addEmployee.setRequestHeader("Content-Type","application/json");
            addEmployee.send(JSON.stringify(data));
             addEmployee.onreadystatechange = processResponseSave;
+            empMatch = false;
 		}
 		else{
 			alert("Select DropPoint");
+		}
+		}
+		else {
+			
+			alert("Invalid Employee details");
+			
 		}
            
       }
       else{
             alert("Employee already exists");	
+            window.location.reload();
       }
    }
+   
    else{
 	
 	alert("Maximum Capacity reached");
+	 window.location.reload();
 }
 }
 
@@ -354,7 +394,10 @@ function funclear() {
 	document.getElementById("droppoints").value="";
 }
 
-document.getElementById("cancel").onclick = function(){funclear()}; 
+document.getElementById("cancel").onclick = function(){
+	updateFlag = false;
+	window.location.reload();
+}; 
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -362,8 +405,9 @@ document.getElementById("cancel").onclick = function(){funclear()};
 var bookingId;
 function editData(row) {	
 	
-	document.getElementById("savebutton").style.display = "none";
-	document.getElementById("updatebutton").style.display = "block";
+	updateFlag = true;
+	//document.getElementById("savebutton").style.display = "none";
+	//document.getElementById("updatebutton").style.display = "block";
 	var id = row.closest("td").id;
 	var rowId = id.replace("td", "");
 	var employeeId = document.getElementById("emp-id");
@@ -386,7 +430,9 @@ function editData(row) {
 
 // To update the edited data
 var updateXML = new XMLHttpRequest();
-document.getElementById("updatebutton").onclick = function() {
+function updateData() {
+	
+	updateFlag = false;
 	var dropPoint = document.getElementById("droppoints").value;
 	if(dropPoint!="Select"){
 	
@@ -400,7 +446,7 @@ document.getElementById("updatebutton").onclick = function() {
 		alert("Select Droppoint");
 	}
 	
-};
+}
 
 function processResponseUpdate() {
 	
@@ -511,7 +557,7 @@ function updateStatusOfEmp() {
 /*------------------------------------------------------------------------------------------------------------------------*/
 
 //Suggestion employeeName
-var employeeDetails;
+
 var empNameSugest=new XMLHttpRequest();
 var suggestUrl="http://localhost:8080/api/v1/tripsheet/getallemployee";
 

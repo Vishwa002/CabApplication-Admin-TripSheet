@@ -24,7 +24,7 @@ public class Employee {
 	@Id
 	int employeeId;
 	String employeeName;
-	
+	int isBlocked;
 	
 	
 //	List<Destination> dropPoint;

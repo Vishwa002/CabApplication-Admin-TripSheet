@@ -15,7 +15,8 @@ public interface BookingRequestRepository extends MongoRepository<BookingRequest
 	
 	@Query(value = "{tripCabId:?0,status:{$nin:[Cancelled, NoShow]}}")
 	List<BookingRequest> getBookingRequestByTripCabId(long tripCabId);
-
+	
+	
 	List<BookingRequest> findByTripCabId(long tripCabId);
 	
 	@Query(value = "{newEmp : ?0, tripCabId : ?1}")

@@ -1,5 +1,5 @@
 window.onload = getTripSheet;
-setInterval('getTripSheet()', 10000);
+setInterval('getTripSheet()', 60000);
 var xhr = new XMLHttpRequest();
 var http = new XMLHttpRequest();
 var tripId = window.location.search;
@@ -253,11 +253,11 @@ function checkEndTrip() {
 			
 			reachedCount++;
 		}
-		else{
-			
-			alert("Cannot end trip");
-		}
 		
+	}
+	if(tableBody.rows.length != reachedCount) {
+		
+		alert("Cannot end trip");
 	}
 	
 	if(reachedCount == tableBody.rows.length) {
@@ -301,6 +301,8 @@ function checkEndTrip() {
 					
 				}
 			}
+			
+			window.location.href = "cabadmin.html";
 		};
 		
 	}

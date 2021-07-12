@@ -74,17 +74,17 @@ public class AdminTripsheetApplication {
 				
 				
 			//	List<Employee> emp=new ArrayList<Employee>();
-				Employee emp1=new 	Employee(201, "Nishok");
+				Employee emp1=new 	Employee(201, "Vishwa",0);
 				employeeRepo.save(emp1);
-				Employee emp2=new 	Employee(202, "Kishore");
+				Employee emp2=new 	Employee(202, "Jerry",0);
 				employeeRepo.save(emp2);
-				Employee emp3=new 	Employee(203, "Mark");
+				Employee emp3=new 	Employee(203, "Gokul",0);
 				employeeRepo.save(emp3);
-				Employee emp4=new 	Employee(204, "Abi");
+				Employee emp4=new 	Employee(204, "Prakash",0);
 				employeeRepo.save(emp4);
-				Employee emp5=new 	Employee(205, "Vignesh");
+				Employee emp5=new 	Employee(205, "Rubin",0);
 				employeeRepo.save(emp5);
-				Employee emp6=new 	Employee(206, "Nishok Smart");
+				Employee emp6=new 	Employee(206, "Nishok Smart",0);
 				employeeRepo.save(emp6);
 			//	emp.addAll(Arrays.asList(emp1,emp2,emp3,emp4,emp5));
 				
@@ -94,11 +94,11 @@ public class AdminTripsheetApplication {
 				TripCabInfo trip=new TripCabInfo(101, "TN24G9999", 1,"BayLine"  , "Tambaram", LocalDate.now(), LocalTime.of(9, 30), 7, 5, 2, "Yet to Start", null,null);
 				tripRepo.save(trip);
 				
-				BookingRequest request1=new BookingRequest(901, 301, "Vishwa","BayLine", "Tambaram","Medavakkam", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request2=new BookingRequest(902, 302, "Jerry","Alpha City", "Tambaram","Camp Road", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request3=new BookingRequest(903, 303, "Gokul","BayLine", "Tambaram","Sembakkam", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request4=new BookingRequest(904, 304, "Prakash","Alpha City", "Tambaram","Koot Road", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request5=new BookingRequest(905, 305, "Rubin","Alpha City", "Tambaram","Camp Road", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
+				BookingRequest request1=new BookingRequest(901, 201, "Vishwa","BayLine", "Tambaram","Medavakkam", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
+				BookingRequest request2=new BookingRequest(902, 202, "Jerry","Alpha City", "Tambaram","Camp Road", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
+				BookingRequest request3=new BookingRequest(903, 203, "Gokul","BayLine", "Tambaram","Sembakkam", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
+				BookingRequest request4=new BookingRequest(904, 204, "Prakash","Alpha City", "Tambaram","Koot Road", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
+				BookingRequest request5=new BookingRequest(905, 205, "Rubin","Alpha City", "Tambaram","Camp Road", LocalTime.of(8, 30),0, 101, null, null ,null, null, "Assigned", null, null, null, null, 0);
 
 //				List<BookingRequest> request= new ArrayList<BookingRequest>();
 //				request.addAll(Arrays.asList(request1,request2));
