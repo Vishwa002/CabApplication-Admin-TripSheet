@@ -12,23 +12,23 @@ var tripCabId = id[1];
 	        var url = "http://localhost:8080/api/v1/ongoingtripsheet/" + tripCabId;
             xhr.open("GET", url, true);
            
-            xhr.onreadystatechange = processResponse;
+            xhr.onreadystatechange = processResponseTripInfo;
             xhr.send(null);
            }
            
-function processResponse() {	
+function processResponseTripInfo() {	
 
             event.preventDefault();
             if(xhr.readyState == 4 && xhr.status == 200) {
 
               var data = JSON.parse(this.responseText);
-              displayInfo(data);
+              displayTripDetails(data);
             
             }
        }
 
 // To display the data 
-function displayInfo(obj) {
+function displayTripDetails(obj) {
 	
 	$("#tablebody").empty();
 	document.getElementById("cabnumber").innerHTML = obj.cabNumber;

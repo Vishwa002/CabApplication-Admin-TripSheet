@@ -9,11 +9,11 @@ var url2 = "http://localhost:8080/api/v1/tripsheet/droppoints/";
            function getTripSheet() {
 	        var url = "http://localhost:8080/api/v1/tripsheet/" + tripCabId;
             xhr.open("GET", url, true);
-            xhr.onreadystatechange = processResponse;
+            xhr.onreadystatechange = processResponseTripDetails;
             xhr.send(null);
             
            }
-function processResponse() {
+function processResponseTripDetails() {
 	
             event.preventDefault();
             if(xhr.readyState == 4 && xhr.status == 200) {
@@ -269,7 +269,7 @@ function saveAndUpdateEmployee() {
 	}
 	else{
 		
-		updateData();
+		updateEmployeedata();
 	}
 }
 var addEmployee = new XMLHttpRequest();
@@ -349,7 +349,7 @@ function addNewEmployee() {
 			addEmployee.open("POST", addEmpURL, true);
            addEmployee.setRequestHeader("Content-Type","application/json");
            addEmployee.send(JSON.stringify(data));
-            addEmployee.onreadystatechange = processResponseSave;
+            addEmployee.onreadystatechange = processResponseSaveBooking;
             empMatch = false;
 		}
 		else{
@@ -359,6 +359,7 @@ function addNewEmployee() {
 		else {
 			
 			alert("Invalid Employee details");
+			 window.location.reload();
 			
 		}
            
@@ -376,7 +377,7 @@ function addNewEmployee() {
 }
 }
 
-function processResponseSave() {
+function processResponseSaveBooking() {
 	
 	if (addEmployee.readyState == 4 &&  addEmployee.status == 200) {
    
@@ -430,7 +431,7 @@ function editData(row) {
 
 // To update the edited data
 var updateXML = new XMLHttpRequest();
-function updateData() {
+function updateEmployeedata() {
 	
 	updateFlag = false;
 	var dropPoint = document.getElementById("droppoints").value;
@@ -439,7 +440,7 @@ function updateData() {
 	updateXML.open("PUT", "http://localhost:8080/api/v1/tripsheet/update/droppoint", true);
 	updateXML.setRequestHeader("Content-Type","application/json");
 	var data = {"bookingId" : bookingId, "dropPoint" : dropPoint};
-	updateXML.onreadystatechange = processResponseUpdate;
+	updateXML.onreadystatechange = processResponseUpdateBooking;
 	updateXML.send(JSON.stringify(data));
 	}
 	else{
@@ -448,7 +449,7 @@ function updateData() {
 	
 }
 
-function processResponseUpdate() {
+function processResponseUpdateBooking() {
 	
 	
 	if (updateXML.readyState == 4 &&  updateXML.status == 200) {
