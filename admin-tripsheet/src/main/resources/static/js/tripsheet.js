@@ -191,11 +191,11 @@ document.getElementById("emp-id").onblur = function() {
 	
 	if(document.getElementById("emp-id").value.trim() !== ""){
 		
-		employeeFilter();
+		employeeNameAutoFill();
 		
 	}
 }
-function employeeFilter() {
+function employeeNameAutoFill() {
 	var empIdBox = document.getElementById("emp-id");
 	var empId = document.getElementById("emp-id").value;
 	//alert("Check");
@@ -477,10 +477,10 @@ yesButton.onclick = function() {
 	deleteXML.open("PUT", "http://localhost:8080/api/v1/tripsheet/delete/booking/" + bookId, true);
 	deleteXML.setRequestHeader("Content-Type","application/json");
 	deleteXML.send();
-	deleteXML.onreadystatechange = processResponseDelete;
+	deleteXML.onreadystatechange = processResponseDeleteBooking;
 }
 
-function processResponseDelete() {
+function processResponseDeleteBooking() {
 	
 	if (deleteXML.readyState == 4 &&  deleteXML.status == 200) {
 		
