@@ -1,6 +1,6 @@
 # CabApplication-Admin-TripSheet
  
- All details in the CommandLine Runner are Hard-code like Trip Details, BookingRequest, Employee Details, Driver Details, Destination,
+ All details in the CommandLine Runner are Hard-coded like Trip Details, BookingRequest, Employee Details, Driver Details, Destination,
  DropPoints and TimeSlot (DropPoints and TimeSlots are based on Destination).
 
 
