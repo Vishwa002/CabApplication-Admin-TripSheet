@@ -175,7 +175,7 @@ function displayTripDetails(obj) {
         td6.className = "spacing1";
  //       td6.innerHTML = "<button type='button' class='reachedbutton' onclick=updateReachedTime(this) id='reached"+ rows +"' style='background-color:green;color:white'>Reached</button>" ;
        if(td4.innerHTML != ""){
-	       td6.innerHTML = "<button type='button' class='reachedbutton' onclick=updateReachedTime(this) disabled id='reached"+ rows +"' style='background-color:green;color:white'>Reached</button>" ;
+	       td6.innerHTML = "<button type='button' class='reachedbutton' onclick=updateReachedTime(this) disabled id='reached"+ rows +"' style='background-color:red;color:white'>Reached</button>" ;
         }
         else{
            td6.innerHTML = "<button type='button' class='reachedbutton' onclick=updateReachedTime(this) id='reached"+ rows +"' style='background-color:green;color:white'>Reached</button>" ;	
@@ -233,7 +233,9 @@ function displayTripDetails(obj) {
 					
 				}
 //				document.getElementById(trow).getElementsByTagName("td")[4].innerHTML = response.reachedTime;
-				document.getElementById(row.id).disabled = true; 
+				document.getElementById(row.id).disabled = true;
+				 document.getElementById(row.id).style.background ="red";
+				 
 			}
 		};
 	

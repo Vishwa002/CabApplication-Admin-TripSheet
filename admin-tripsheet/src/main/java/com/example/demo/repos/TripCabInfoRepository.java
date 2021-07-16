@@ -9,9 +9,6 @@ import com.example.demo.entity.TripCabInfo;
 @Repository
 public interface TripCabInfoRepository extends MongoRepository<TripCabInfo, Long> {
 
-//	@Query(value = "{}")
-//	TripCabInfo findTripCabInfoByCabNumber(String CabNumber);
-	
 	
 	
 
