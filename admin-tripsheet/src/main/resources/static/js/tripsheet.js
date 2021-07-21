@@ -1,10 +1,13 @@
+
+
 window.onload = getTripSheet;
 var timeOut = setInterval(function() {
 	getTripSheet();
 }, 60000);
 var xhr = new XMLHttpRequest();
 var http = new XMLHttpRequest();
-var tripCabId = 101;
+var idSearch = window.location.search;
+var tripCabId = idSearch.split("=")[1];
 var url2 = "http://localhost:8080/api/v1/tripsheet/droppoints/";
 
 function getTripSheet() {
@@ -328,7 +331,7 @@ function addNewEmployee() {
 		}
 	}
 	var status = document.getElementById("status").innerHTML;
-	var tripCabId = 101;
+	
 
 	var data = {
 		"employeeId": employeeId, "employeeName": employeeName, "dropPoint": dropPoint, "source": source,

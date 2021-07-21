@@ -108,9 +108,12 @@ public class AdminTripsheetApplication {
 				employeeRepo.save(emp7);
 
 				// Trip Details
-				TripCabInfo trip = new TripCabInfo(101, "TN24G9999", 1, "BayLine", "Tambaram", LocalDate.now(),
+				TripCabInfo trip1 = new TripCabInfo(101, "TN24G9999", 1, "BayLine", "Tambaram", LocalDate.now(),
 						LocalTime.of(9, 30), 7, 6, 1, "Yet to Start", null, null);
-				tripRepo.save(trip);
+				TripCabInfo trip2 = new TripCabInfo(102, "TN24G9999", 1, "BayLine", "Tambaram", LocalDate.now(),
+						LocalTime.of(9, 30), 7, 6, 1, "Yet to Start", null, null);
+				tripRepo.save(trip1);
+				tripRepo.save(trip2);
 
 				// BookingRequest Details
 				BookingRequest request1 = new BookingRequest(901, 201, "Vishwa", "Alpla City", "Tambaram", "Medavakkam",
@@ -124,7 +127,7 @@ public class AdminTripsheetApplication {
 				BookingRequest request5 = new BookingRequest(905, 205, "Rubin", "Alpha City", "Tambaram", "Camp Road",
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
 				BookingRequest request6 = new BookingRequest(906, 206, "Nishok", "Alpha City", "Tambaram", "Medavakkam",
-						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
+						LocalTime.of(8, 30), 0, 102, null, null, null, null, "Assigned", null, null, null, null, 0);
 				bookingRepo.save(request1);
 				bookingRepo.save(request2);
 				bookingRepo.save(request3);
