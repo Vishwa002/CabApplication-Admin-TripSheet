@@ -54,7 +54,7 @@ public class AssignedCabsTripSheetBL {
 		
 	}
 
-	public Employee getEmployeeName(int employeeId) {
+	public Employee getEmployeeName(String employeeId) {
 		
 		return this.tripSheetDl.getEmployeeName(employeeId);
 	}
@@ -98,7 +98,7 @@ public class AssignedCabsTripSheetBL {
 		this.tripSheetDl.updateCabStatus(tripCabId);
 	}
 
-	public void updateEmployeeStatus(long tripCabId, List<Integer> showList, List<Integer> noShowList) {
+	public void updateEmployeeStatus(long tripCabId, List<String> showList, List<String> noShowList) {
 		
 		this.tripSheetDl.updateEmployeeStatus(tripCabId, showList, noShowList);
 	}

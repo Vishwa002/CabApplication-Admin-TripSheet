@@ -57,7 +57,7 @@ public class OnGoingTripSheetController {
 	    }
 
 	    @PutMapping(path = "/update/time/status/{tripCabId}/{showList}/{noShowList}")
-	    public ResponseEntity<Boolean> updateTimeAndStatus(@PathVariable ("tripCabId" ) long tripCabId, @PathVariable ("showList" ) List<Integer> showList, @PathVariable ("noShowList" ) List<Integer> noShowList) {
+	    public ResponseEntity<Boolean> updateTimeAndStatus(@PathVariable ("tripCabId" ) long tripCabId, @PathVariable ("showList" ) List<String> showList, @PathVariable ("noShowList" ) List<String> noShowList) {
 	    	
 	    	this.tripSheetBl.updateCabStatus(tripCabId);
 	    	this.tripSheetBl.updateEmployeeStatus(tripCabId, showList, noShowList);

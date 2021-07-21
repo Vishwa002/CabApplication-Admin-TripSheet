@@ -23,5 +23,8 @@ public interface BookingRequestRepository extends MongoRepository<BookingRequest
 	BookingRequest saveByTripCabId(BookingRequest newEmp, long tripCabId);
 
 	
-	BookingRequest findByTripCabIdAndEmployeeId(long tripCabId, int employeeId);
+	
+
+
+	BookingRequest findByTripCabIdAndEmployeeId(long tripCabId, String employeeId);
 }

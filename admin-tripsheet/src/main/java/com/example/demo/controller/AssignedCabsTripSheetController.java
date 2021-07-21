@@ -57,7 +57,7 @@ public class AssignedCabsTripSheetController {
 	//get employee name
 	
 	@GetMapping(path = "/tripsheet/employee/{employeeId}")
-	public ResponseEntity<Employee> getEmployeeName(@PathVariable ("employeeId") int employeeId)
+	public ResponseEntity<Employee> getEmployeeName(@PathVariable ("employeeId") String employeeId)
 	{
 		Employee emp=this.tripSheetBl.getEmployeeName(employeeId);
 		

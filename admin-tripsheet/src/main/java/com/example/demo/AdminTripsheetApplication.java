@@ -92,20 +92,26 @@ public class AdminTripsheetApplication {
 				destinationRepo.save(dest2);
 
 				// Employee Details
-				Employee emp1 = new Employee(201, "Vishwa", 0);
+				Employee emp1 = new Employee("Ava-201", "Vishwa", 0);
 				employeeRepo.save(emp1);
-				Employee emp2 = new Employee(202, "Jerry", 0);
+				Employee emp2 = new Employee("Ava-202", "Jerry", 0);
 				employeeRepo.save(emp2);
-				Employee emp3 = new Employee(203, "Gokul", 0);
+				Employee emp3 = new Employee("Ava-203", "Gokul", 0);
 				employeeRepo.save(emp3);
-				Employee emp4 = new Employee(204, "Prakash", 0);
+				Employee emp4 = new Employee("Ava-204", "Prakash", 0);
 				employeeRepo.save(emp4);
-				Employee emp5 = new Employee(205, "Rubin", 0);
+				Employee emp5 = new Employee("Ava-205", "Rubin", 0);
 				employeeRepo.save(emp5);
-				Employee emp6 = new Employee(206, "Nishok ", 0);
+				Employee emp6 = new Employee("Ava-206", "Nishok ", 0);
 				employeeRepo.save(emp6);
-				Employee emp7 = new Employee(207, "Kishore ", 0);
+				Employee emp7 = new Employee("Ava-207", "Jawahar ", 0);
 				employeeRepo.save(emp7);
+				Employee emp8 = new Employee("Ava-208", "Rohit ", 0);
+				employeeRepo.save(emp8);
+				Employee emp9 = new Employee("Ava-209", "Kumar ", 0);
+				employeeRepo.save(emp9);
+				Employee emp10 = new Employee("Ava-210", "Kishore ", 0);
+				employeeRepo.save(emp10);
 
 				// Trip Details
 				TripCabInfo trip1 = new TripCabInfo(101, "TN24G9999", 1, "BayLine", "Tambaram", LocalDate.now(),
@@ -116,25 +122,36 @@ public class AdminTripsheetApplication {
 				tripRepo.save(trip2);
 
 				// BookingRequest Details
-				BookingRequest request1 = new BookingRequest(901, 201, "Vishwa", "Alpla City", "Tambaram", "Medavakkam",
+				BookingRequest request1 = new BookingRequest(901,"Ava-201", "Vishwa", "Alpla City", "Tambaram", "Medavakkam",
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request2 = new BookingRequest(902, 202, "Jerry", "Alpha City", "Tambaram", "Camp Road",
+				BookingRequest request2 = new BookingRequest(902, "Ava-202", "Jerry", "Alpha City", "Tambaram", "Camp Road",
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request3 = new BookingRequest(903, 203, "Gokul", "Alpha City", "Tambaram", "Sembakkam",
+				BookingRequest request3 = new BookingRequest(903, "Ava-203", "Gokul", "Alpha City", "Tambaram", "Sembakkam",
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request4 = new BookingRequest(904, 204, "Prakash", "Alpha City", "Tambaram", "Koot Road",
+				BookingRequest request4 = new BookingRequest(904, "Ava-204", "Prakash", "Alpha City", "Tambaram", "Koot Road",
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request5 = new BookingRequest(905, 205, "Rubin", "Alpha City", "Tambaram", "Camp Road",
+				BookingRequest request5 = new BookingRequest(905,"Ava-205", "Rubin", "Alpha City", "Tambaram", "Camp Road",
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request6 = new BookingRequest(906, 206, "Nishok", "Alpha City", "Tambaram", "Medavakkam",
-						LocalTime.of(8, 30), 0, 102, null, null, null, null, "Assigned", null, null, null, null, 0);
+				BookingRequest request6 = new BookingRequest(906, "Ava-206", "Nishok", "Alpha City", "Tambaram", "Medavakkam",
+						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
 				bookingRepo.save(request1);
 				bookingRepo.save(request2);
 				bookingRepo.save(request3);
 				bookingRepo.save(request4);
 				bookingRepo.save(request5);
 				bookingRepo.save(request6);
+				
+				
+				BookingRequest request7 = new BookingRequest(904, "Ava-207", "Jawahar", "Alpha City", "Tambaram", "Koot Road",
+						LocalTime.of(8, 30), 0, 102, null, null, null, null, "Assigned", null, null, null, null, 0);
+				BookingRequest request8 = new BookingRequest(905,"Ava-208", "Rohit", "Alpha City", "Tambaram", "Camp Road",
+						LocalTime.of(8, 30), 0, 102, null, null, null, null, "Assigned", null, null, null, null, 0);
+				BookingRequest request9 = new BookingRequest(906, "Ava-209", "Kumar", "Alpha City", "Tambaram", "Medavakkam",
+						LocalTime.of(8, 30), 0, 102, null, null, null, null, "Assigned", null, null, null, null, 0);
 
+				bookingRepo.save(request7);
+				bookingRepo.save(request8);
+				bookingRepo.save(request9);
 			}
 		};
 	}

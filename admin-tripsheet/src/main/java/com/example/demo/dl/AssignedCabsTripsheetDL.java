@@ -91,7 +91,7 @@ public class AssignedCabsTripsheetDL {
 		}
 	}
 
-	public Employee getEmployeeName(int employeeId) {
+	public Employee getEmployeeName(String employeeId) {
 
 		Optional<Employee> emp=this.employeeRepo.findById(employeeId);
 		return emp.get();
@@ -182,9 +182,9 @@ public class AssignedCabsTripsheetDL {
 		this.tripCabInfoRepo.save(updatedCab);
 	}
 
-	public void updateEmployeeStatus(long tripCabId, List<Integer> showList, List<Integer> noShowList) {
+	public void updateEmployeeStatus(long tripCabId, List<String> showList, List<String> noShowList) {
 		
-		for(int employeeId : showList) {
+		for(String employeeId : showList) {
 			
 			BookingRequest request = this.bookingRequestRepo.findByTripCabIdAndEmployeeId(tripCabId, employeeId);
 			request.setStatus("On Progress");
@@ -192,7 +192,7 @@ public class AssignedCabsTripsheetDL {
 		}
 		
 		if(!(noShowList.isEmpty())) {
-         for(int employeeId : noShowList) {
+         for(String employeeId : noShowList) {
 			
 			BookingRequest request = this.bookingRequestRepo.findByTripCabIdAndEmployeeId(tripCabId, employeeId);
 			request.setStatus("NoShow");

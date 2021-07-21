@@ -22,7 +22,7 @@ import lombok.experimental.FieldDefaults;
 public class Employee {
 	
 	@Id
-	int employeeId;
+	String employeeId;
 	String employeeName;
 	int isBlocked;
 	
