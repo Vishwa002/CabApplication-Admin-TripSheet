@@ -36,7 +36,6 @@ public class TripCabInfo {
 	String status;
 	LocalTime startTime;
 	LocalTime endTime;
-	//List<BookingRequest> bookingId;
 	
 //	String createdBy;
 //	LocalDate createdDate;

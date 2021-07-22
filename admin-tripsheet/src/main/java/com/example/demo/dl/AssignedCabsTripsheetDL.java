@@ -42,19 +42,9 @@ public class AssignedCabsTripsheetDL {
 		return this.bookingRequestRepo.findAll();
 	}
 
-//	// For editing Booking Request
-//	public BookingRequest editBookingRequest(BookingRequest request) {
-//		request.setBookingId(bookingRequestRepo.count() + 1);
-//
-//		request.setStatus("No Show");
-//		// request.setDropPoint();
-//		return this.bookingRequestRepo.save(request);
-//
-//	}
 
 	
 	public TripCabInfo gettripCabId(long tripCabId) {
-		// TODO Auto-generated method stub
 		Optional<TripCabInfo> trip= this.tripCabInfoRepo.findById(tripCabId);
 		TripCabInfo trip1=trip.get();
 		return trip1;
@@ -155,12 +145,7 @@ public class AssignedCabsTripsheetDL {
         trip1.setStatus("Completed");
        return this.tripCabInfoRepo.save(trip1);
      
-/*        List<BookingRequest> booking=this.bookingRequestRepo.findByTripCabId(tripCabId);
-        for(BookingRequest eachRequest:booking) {
-            eachRequest.setReachedTime(LocalTime.now());
-            eachRequest.setStatus("Completed");
-            this.bookingRequestRepo.save(eachRequest);
-        }   */     
+     
     }
 
 	public BookingRequest updateReachedTime(long bookingId) {
@@ -177,7 +162,7 @@ public class AssignedCabsTripsheetDL {
 		
 		Optional<TripCabInfo> cabInfo = this.tripCabInfoRepo.findById(tripCabId);
 		TripCabInfo updatedCab = cabInfo.get();
-		updatedCab.setStatus("On Progress");
+		updatedCab.setStatus("Inprogress");
 		updatedCab.setStartTime(LocalTime.now());
 		this.tripCabInfoRepo.save(updatedCab);
 	}
@@ -187,7 +172,7 @@ public class AssignedCabsTripsheetDL {
 		for(String employeeId : showList) {
 			
 			BookingRequest request = this.bookingRequestRepo.findByTripCabIdAndEmployeeId(tripCabId, employeeId);
-			request.setStatus("On Progress");
+			request.setStatus("Inprogress");
 			this.bookingRequestRepo.save(request);
 		}
 		
@@ -195,7 +180,7 @@ public class AssignedCabsTripsheetDL {
          for(String employeeId : noShowList) {
 			
 			BookingRequest request = this.bookingRequestRepo.findByTripCabIdAndEmployeeId(tripCabId, employeeId);
-			request.setStatus("NoShow");
+			request.setStatus("Noshow");
 			Optional<Employee> emp=this.employeeRepo.findById(employeeId);
 			Employee employee=emp.get();
 			employee.setIsBlocked(1);
@@ -213,7 +198,7 @@ public class AssignedCabsTripsheetDL {
 	public BookingRequest updateShow(long bookingId) {
 		Optional<BookingRequest> req=this.bookingRequestRepo.findById(bookingId);
 		BookingRequest found=req.get();
-		found.setStatus("On Progress");
+		found.setStatus("Inprogress");
 		return this.bookingRequestRepo.save(found);
 	}
 

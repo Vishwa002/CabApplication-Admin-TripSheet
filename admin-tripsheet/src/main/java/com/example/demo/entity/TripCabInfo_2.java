@@ -31,7 +31,4 @@ public class TripCabInfo_2 {
 	LocalTime startTime;
 	LocalTime endTime;
 	List<BookingRequest> bookingId;
-//	List<HashMap<String, Object>> bookingRequest;
-//	
-//	HashMap<Integer, List<Object>> bookingRequest1;
 }
