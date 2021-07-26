@@ -7,6 +7,6 @@ import com.example.demo.entity.Employee;
 @Repository
 public interface EmployeeRepository extends MongoRepository<Employee, String> {
 	
-	Employee findByEmployeeName(String empoyeeName);
+	Employee findByEmployeeName(String employeeName);
 
 }

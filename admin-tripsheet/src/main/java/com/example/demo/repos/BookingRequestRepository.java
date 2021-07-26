@@ -13,7 +13,7 @@ public interface BookingRequestRepository extends MongoRepository<BookingRequest
 
 	
 	
-	@Query(value = "{tripCabId:?0,status:{$nin:[Cancelled, NoShow]}}")
+	@Query(value = "{tripCabId:?0,status:{$nin:[Cancelled, Noshow]}}")
 	List<BookingRequest> getBookingRequestByTripCabId(long tripCabId);
 	
 	

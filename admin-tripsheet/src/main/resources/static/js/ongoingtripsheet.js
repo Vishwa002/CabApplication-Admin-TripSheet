@@ -201,6 +201,8 @@ function displayTripDetails(obj) {
     var updateTime = new XMLHttpRequest();
 	function updateReachedTime(row) {
 		
+		
+		
 		var trow = row.closest("tr").id;
 		var bookId = document.getElementById(trow).getElementsByTagName("td")[6].innerHTML;
 		updateTime.open("PUT", "http://localhost:8080/api/v1/update/reachedtime/" + bookId, true);
@@ -237,7 +239,22 @@ function displayTripDetails(obj) {
 				 document.getElementById(row.id).style.background ="red";
 				 
 			}
+			var tableBody = document.getElementById("tablebody");
+			var reachedCount = 0;
+			for (var i = 0; i < tableBody.rows.length; i++) {
+
+				if (tableBody.rows[i].cells[4].innerHTML != "") {
+
+					reachedCount++;
+				}
+
+			}
+			if(reachedCount==tableBody.rows.length){
+				checkEndTrip();
+			}
+			
 		};
+		
 	
 }
 

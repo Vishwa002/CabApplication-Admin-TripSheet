@@ -102,21 +102,21 @@ public class AdminTripsheetApplication {
 				employeeRepo.save(emp4);
 				Employee emp5 = new Employee("Ava-205", "Rubin", 0);
 				employeeRepo.save(emp5);
-				Employee emp6 = new Employee("Ava-206", "Nishok ", 0);
+				Employee emp6 = new Employee("Ava-206", "Mark", 0);
 				employeeRepo.save(emp6);
-				Employee emp7 = new Employee("Ava-207", "Jawahar ", 0);
+				Employee emp7 = new Employee("Ava-207", "Jawahar", 0);
 				employeeRepo.save(emp7);
-				Employee emp8 = new Employee("Ava-208", "Rohit ", 0);
+				Employee emp8 = new Employee("Ava-208", "Rohit", 0);
 				employeeRepo.save(emp8);
-				Employee emp9 = new Employee("Ava-209", "Kumar ", 0);
+				Employee emp9 = new Employee("Ava-209", "Kumar", 0);
 				employeeRepo.save(emp9);
-				Employee emp10 = new Employee("Ava-210", "Kishore ", 0);
+				Employee emp10 = new Employee("Ava-210", "Abisekk", 0);
 				employeeRepo.save(emp10);
 
 				// Trip Details
 				TripCabInfo trip1 = new TripCabInfo(101, "TN24G9999", 1, "BayLine", "Tambaram", LocalDate.now(),
 						LocalTime.of(9, 30), 7, 6, 1, "Yet to Start", null, null);
-				TripCabInfo trip2 = new TripCabInfo(102, "TN24G9999", 2, "BayLine", "Tambaram", LocalDate.now(),
+				TripCabInfo trip2 = new TripCabInfo(102, "TN24G9999", 2, "BayLine", "Vellachery", LocalDate.now(),
 						LocalTime.of(9, 30), 5, 3, 2, "Yet to Start", null, null);
 				tripRepo.save(trip1);
 				tripRepo.save(trip2);
@@ -132,7 +132,7 @@ public class AdminTripsheetApplication {
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
 				BookingRequest request5 = new BookingRequest(905,"Ava-205", "Rubin", "Alpha City", "Tambaram", "Camp Road",
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
-				BookingRequest request6 = new BookingRequest(906, "Ava-206", "Nishok", "Alpha City", "Tambaram", "Medavakkam",
+				BookingRequest request6 = new BookingRequest(906, "Ava-206", "Mark", "Alpha City", "Tambaram", "Medavakkam",
 						LocalTime.of(8, 30), 0, 101, null, null, null, null, "Assigned", null, null, null, null, 0);
 				bookingRepo.save(request1);
 				bookingRepo.save(request2);

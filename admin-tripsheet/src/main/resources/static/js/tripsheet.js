@@ -146,7 +146,7 @@ function displayInfo(obj) {
 		if (obj.bookingId[row].status === "Inprogress") {
 
 			dropValue.children[0].setAttribute("selected", "selected");
-			dropValue.disabled = true;
+//			dropValue.disabled = true;
 
 		}
 	}
@@ -277,7 +277,7 @@ function saveAndUpdateEmployee() {
 	}
 }
 var addEmployee = new XMLHttpRequest();
-var addEmpURL = "http://localhost:8080/api/v1/tripsheet/addemployee/" + 101;
+var addEmpURL = "http://localhost:8080/api/v1/tripsheet/addemployee/" + tripCabId;
 var tableData = document.getElementById("tablebody");
 var matchCount = 0;
 var empMatch = false;
@@ -653,29 +653,27 @@ document.addEventListener("click", function(e) {
 	divElement.style.display = "none";
 })
 /*-------------------------------------------------------------------------------------------------------------------------------*/
-//show update to update status of the employee on driver's screen when admin update
-var bookingId;
-
-var showXML = new XMLHttpRequest();
-var showUrl = "http://localhost:8080/api/v1/tripsheet/show/";
-function showUpdate(obj) {
-	var trowId = obj.closest("tr").id;
-	var trow = document.getElementById(trowId);
-	var showopt = document.getElementById(obj.id);
-	if (showopt.value == 1) {
-
-		bookingId = trow.cells[7].innerHTML;
-		showXML.open("PUT", showUrl + bookingId, true);
-		showXML.send(null);
-		showXML.onreadystatechange = function() {
-			if (showXML.readyState == 4 && showXML.status == 200) {
-				showopt.disabled = true;
-			}
-		}
-
-
-
-	}
-
-
-}
+////show update to update status of the employee on driver's screen when admin update
+//var bookingId;
+//
+//var showXML = new XMLHttpRequest();
+//var showUrl = "http://localhost:8080/api/v1/tripsheet/show/";
+//function showUpdate(obj) {
+//	var trowId = obj.closest("tr").id;
+//	var trow = document.getElementById(trowId);
+//	var showopt = document.getElementById(obj.id);
+//	if (showopt.value == 1) {
+//
+//		bookingId = trow.cells[7].innerHTML;
+//		showXML.open("PUT", showUrl + bookingId, true);
+//		showXML.send(null);
+//		showXML.onreadystatechange = function() {
+//			if (showXML.readyState == 4 && showXML.status == 200) {
+//				showopt.disabled = true;
+//			}
+//		}
+//
+//
+//
+//	}
+//}
