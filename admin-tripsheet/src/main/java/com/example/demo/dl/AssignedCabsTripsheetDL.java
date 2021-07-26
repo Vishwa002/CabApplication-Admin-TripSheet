@@ -94,22 +94,23 @@ public class AssignedCabsTripsheetDL {
 	}
 
 	public BookingRequest addEmployee(BookingRequest request, long tripCabId) {
-		Query query = new Query();
-		
-		Criteria c1 = Criteria.where("employeeId").is(request.getEmployeeId());
-		Criteria c2 = Criteria.where("status").is("Assigned");
-		Criteria c3 = Criteria.where("status").is("Inprogress");
-		
-		Criteria c4 = new Criteria();
-		Criteria c5 = new Criteria();
-		
-		c4.orOperator(c2,c3);
-		c5.andOperator(c1,c4);
-		
-		query.addCriteria(c5);
-		
-		List<BookingRequest> alreadyExist = this.template.find(query, BookingRequest.class, "BookingRequest");
-		if(alreadyExist.isEmpty()) {
+//		Query query = new Query();
+//		
+//		Criteria c1 = Criteria.where("employeeId").is(request.getEmployeeId());
+//		Criteria c2 = Criteria.where("status").is("Assigned");
+//		Criteria c3 = Criteria.where("status").is("Inprogress");
+//		
+//		Criteria c4 = new Criteria();
+//		Criteria c5 = new Criteria();
+//		
+//		c4.orOperator(c2,c3);
+//		c5.andOperator(c1,c4);
+//		
+//		query.addCriteria(c5);
+//		
+//		List<BookingRequest> alreadyExist = this.template.find(query, BookingRequest.class, "BookingRequest");
+		BookingRequest alreadyExist = this.bookingRequestRepo.findByEmployeeId(request.getEmployeeId());
+		if(alreadyExist==null) {
 			
 			request.setBookingId(bookingRequestRepo.count() + 1);
 			request.setTripCabId(tripCabId);
