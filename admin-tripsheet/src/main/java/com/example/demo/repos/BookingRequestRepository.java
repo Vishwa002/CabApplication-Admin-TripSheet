@@ -27,4 +27,8 @@ public interface BookingRequestRepository extends MongoRepository<BookingRequest
 
 
 	BookingRequest findByTripCabIdAndEmployeeId(long tripCabId, String employeeId);
+
+	@Query(value = "{employeeId:?0 , status:Assigned}")
+	BookingRequest findByEmployeeId(String employeeId);
 }
+//{ tags: { $eq: [ "A", "B" ] } } )

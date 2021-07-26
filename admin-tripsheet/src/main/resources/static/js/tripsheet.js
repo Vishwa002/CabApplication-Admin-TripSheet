@@ -392,6 +392,10 @@ function processResponseSaveBooking() {
 		funclear();
 		window.location.reload();
 	}
+	if (addEmployee.readyState == 4 && addEmployee.status == 208){
+		alert("Employee has already booked a cab");
+		window.location.reload();
+	}
 }
 
 function funclear() {

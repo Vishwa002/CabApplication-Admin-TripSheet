@@ -82,6 +82,10 @@ public class AssignedCabsTripSheetController {
 		
 		BookingRequest req=this.tripSheetBl.addEmployee(request, tripCabId);
 		
+		if(req==null) {
+			return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(req);
+		}
+		
 		return ResponseEntity.status(HttpStatus.OK).body(req);
 				
 	}
